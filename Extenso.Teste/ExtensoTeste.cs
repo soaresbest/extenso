@@ -24,7 +24,7 @@ namespace Extenso.Teste
         [TestCase((ulong)17, "dezessete")]
         [TestCase((ulong)18, "dezoito")]
         [TestCase((ulong)19, "dezenove")]
-        public void Para_unidade_retornar_por_extenso(ulong numero, string respostaEsperada)
+        public void Para_numero_retornar_por_extenso(ulong numero, string respostaEsperada)
         {
             Assert.AreEqual(respostaEsperada, Extenso.Converter(numero));
         }
