@@ -6,8 +6,12 @@
         {
             if (numero == 1)
                 return "um";
-
-            return "dois";
+            else if (numero == 2)
+                return "dois";
+            else
+            {
+                return "três";
+            }
         }
     }
 }
