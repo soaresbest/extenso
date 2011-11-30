@@ -2,12 +2,15 @@
 {
     public class Extenso
     {
+        const string um = "um";
+        const string vinte = "vinte";
+
         public static string Converter(ulong numero)
         {
             switch (numero)
             {
                 case 1:
-                    return "um";
+                    return um;
                 case 2:
                     return "dois";
                 case 3:
@@ -45,9 +48,9 @@
                 case 19:
                     return "dezenove";
                 case 20:
-                    return "vinte";
+                    return vinte;
                 case 21:
-                    return "vinte e um";
+                    return vinte + " e " + um;
                 default:
                     return "";
             }
