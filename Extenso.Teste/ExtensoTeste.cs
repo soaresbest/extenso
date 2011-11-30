@@ -10,5 +10,11 @@ namespace Extenso.Teste
         {
             Assert.AreEqual("um", Extenso.Converter(1));
         }
+
+        [Test]
+        public void Para_2_retornar_dois()
+        {
+            Assert.AreEqual("dois", Extenso.Converter(2));
+        }
     }
 }
