@@ -35,7 +35,12 @@ namespace Extenso.Teste
         [TestCase((ulong)101, "cento e um")]
         [TestCase((ulong)151, "cento e cinquenta e um")]
         [TestCase((ulong)200, "duzentos")]
-        [TestCase((ulong)999, "novecentos e noventa e nove")]
+        [TestCase((ulong)1000, "mil")]
+        [TestCase((ulong)1001, "mil e um")]
+        [TestCase((ulong)1010, "mil e dez")]
+        [TestCase((ulong)1100, "mil e cem")]
+        [TestCase((ulong)1111, "mil e cento e onze")]
+        [TestCase((ulong)9999, "nove mil novecentos e noventa e nove")]
         public void Para_numero_retornar_por_extenso(ulong numero, string respostaEsperada)
         {
             Assert.AreEqual(respostaEsperada, Extenso.Converter(numero));
