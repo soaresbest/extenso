@@ -1,0 +1,12 @@
+read -p "Verde: implementar o minimo possivel para passar"
+git add . -A
+git commit -m"1-Verde"
+
+read -p "Refatorar: eliminar duplicidade"
+git add -A .
+git commit -m"2-Refatorar"
+
+read -p "Teste: uma unica funcionalidade, bem pequenininha"
+git add -A .
+git commit -m"3-Teste"
+
