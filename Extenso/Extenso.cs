@@ -4,7 +4,10 @@
     {
         public static string Converter(ulong numero)
         {
-            return "um";
+            if (numero == 1)
+                return "um";
+
+            return "dois";
         }
     }
 }
