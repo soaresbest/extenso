@@ -24,6 +24,14 @@ namespace Extenso
                 {
                     return vinte + " e " + ConverterAtehDezenove(numero - 20);
                 }
+                if (numero == 30)
+                {
+                    return "trinta";
+                }
+                if (numero >= 31 && numero <= 39)
+                {
+                    return "trinta e " + ConverterAtehDezenove(numero - 30);
+                }
             }
             throw new Exception("o número " + numero + " não pôde ser tratado.");
         }
