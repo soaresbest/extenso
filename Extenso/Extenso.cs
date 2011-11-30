@@ -24,8 +24,28 @@
                     return "oito";
                 case 9:
                     return "nove";
-                default:
+                case 10:
                     return "dez";
+                case 11:
+                    return "onze";
+                case 12:
+                    return "doze";
+                case 13:
+                    return "treze";
+                case 14:
+                    return "quatorze";
+                case 15:
+                    return "quinze";
+                case 16:
+                    return "dezesseis";
+                case 17:
+                    return "dezessete";
+                case 18:
+                    return "dezoito";
+                case 19:
+                    return "dezenove";
+                default:
+                    return "";
             }
         }
     }
