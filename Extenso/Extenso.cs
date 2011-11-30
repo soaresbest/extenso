@@ -2,6 +2,7 @@
 {
     public class Extenso
     {
+        const string dois = "dois";
         const string um = "um";
         const string vinte = "vinte";
 
@@ -51,6 +52,8 @@
                     return vinte;
                 case 21:
                     return vinte + " e " + um;
+                case 22:
+                    return vinte + " e " + dois;
                 default:
                     return "";
             }
