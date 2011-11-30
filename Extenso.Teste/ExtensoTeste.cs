@@ -16,5 +16,11 @@ namespace Extenso.Teste
         {
             Assert.AreEqual("dois", Extenso.Converter(2));
         }
+
+        [Test]
+        public void Para_3_retornar_tres()
+        {
+            Assert.AreEqual("três", Extenso.Converter(3));
+        }
     }
 }
