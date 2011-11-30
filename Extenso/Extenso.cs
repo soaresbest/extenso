@@ -44,6 +44,10 @@
                     return "dezoito";
                 case 19:
                     return "dezenove";
+                case 20:
+                    return "vinte";
+                case 21:
+                    return "vinte e um";
                 default:
                     return "";
             }
