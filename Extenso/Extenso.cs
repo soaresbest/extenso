@@ -1,4 +1,6 @@
-﻿namespace Extenso
+﻿using System;
+
+namespace Extenso
 {
     public class Extenso
     {
@@ -7,6 +9,26 @@
         const string vinte = "vinte";
 
         public static string Converter(ulong numero)
+        {
+            if (numero <= 19)
+            {
+                return ConverterAtehDezenove(numero);
+            }
+            else
+            {
+                if (numero == 20)
+                {
+                    return vinte;
+                }
+                if (numero >= 21 && numero <= 29)
+                {
+                    return vinte + " e " + ConverterAtehDezenove(numero - 20);
+                }
+            }
+            throw new Exception("o número " + numero + " não pôde ser tratado.");
+        }
+
+        private static string ConverterAtehDezenove(ulong numero)
         {
             switch (numero)
             {
@@ -48,12 +70,6 @@
                     return "dezoito";
                 case 19:
                     return "dezenove";
-                case 20:
-                    return vinte;
-                case 21:
-                    return vinte + " e " + um;
-                case 22:
-                    return vinte + " e " + dois;
                 default:
                     return "";
             }
