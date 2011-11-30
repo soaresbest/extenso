@@ -24,6 +24,10 @@ namespace Extenso
 
                 return dezena;
             }
+            if (numero >= 100 && numero <= 999)
+            {
+                return "cem";
+            }
             throw new Exception("o número " + numero + " não pôde ser tratado.");
         }
 
