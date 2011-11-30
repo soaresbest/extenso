@@ -2,62 +2,114 @@
 
 namespace Extenso
 {
-    public class Extenso
+    public static class Extenso
     {
-        const string dois = "dois";
-        const string um = "um";
-        const string vinte = "vinte";
-
         public static string Converter(ulong numero)
         {
+            if (numero <= 9)
+            {
+                return ConverterUnidade(numero);
+            }
             if (numero <= 19)
             {
-                return ConverterAtehDezenove(numero);
+                return ConverterDeDezAtehDezenove(numero);
             }
-            else
+            if (numero >= 20 && numero <= 99)
             {
-                if (numero == 20)
-                {
-                    return vinte;
-                }
-                if (numero >= 21 && numero <= 29)
-                {
-                    return vinte + " e " + ConverterAtehDezenove(numero - 20);
-                }
-                if (numero == 30)
-                {
-                    return "trinta";
-                }
-                if (numero >= 31 && numero <= 39)
-                {
-                    return "trinta e " + ConverterAtehDezenove(numero - 30);
-                }
+                string dezena = ConverterDezena(numero);
+                string unidade = ConverterUnidade(numero);
+
+                if (!string.IsNullOrEmpty(unidade))
+                    return string.Format("{0} e {1}", dezena, unidade);
+
+                return dezena;
             }
             throw new Exception("o número " + numero + " não pôde ser tratado.");
         }
 
-        private static string ConverterAtehDezenove(ulong numero)
+        private static string ConverterUnidade(ulong numero)
+        {
+            var texto = numero.ToString();
+
+            var unidade = texto[texto.Length - 1];
+
+            switch (unidade)
+            {
+                case '0':
+                {
+                    if (numero > 9)
+                        return "";
+
+                    return "zero";
+                }
+                case '1':
+                    return "um";
+                case '2':
+                    return "dois";
+                case '3':
+                    return "três";
+                case '4':
+                    return "quatro";
+                case '5':
+                    return "cinco";
+                case '6':
+                    return "seis";
+                case '7':
+                    return "sete";
+                case '8':
+                    return "oito";
+                case '9':
+                    return "nove";
+                default:
+                {
+                    throw new Exception(
+                    string.Format(
+                        "a unidade {0} do número {1} não está no intervalo [0-9].",
+                        unidade,
+                        numero));
+                }
+            }
+        }
+
+        private static string ConverterDezena(ulong numero)
+        {
+            var texto = numero.ToString();
+
+            var dezena = texto[texto.Length - 2];
+
+            switch (dezena)
+            {
+                case '2':
+                    return "vinte";
+                case '3':
+                    return "trinta";
+                case '4':
+                    return "quarenta";
+                case '5':
+                    return "cinquenta";
+                case '6':
+                    return "sessenta";
+                case '7':
+                    return "setenta";
+                case '8':
+                    return "oitenta";
+                case '9':
+                    return "noventa";
+                default:
+                {
+                    throw new Exception(
+                        string.Format(
+                            "a dezena {0} do número {1} não está no intervalo [2-9].",
+                            dezena,
+                            numero));
+                }
+            }
+        }
+
+        private static string ConverterDeDezAtehDezenove(ulong numero)
         {
             switch (numero)
             {
-                case 1:
-                    return um;
-                case 2:
-                    return "dois";
-                case 3:
-                    return "três";
-                case 4:
-                    return "quatro";
-                case 5:
-                    return "cinco";
-                case 6:
-                    return "seis";
-                case 7:
-                    return "sete";
-                case 8:
-                    return "oito";
-                case 9:
-                    return "nove";
                 case 10:
                     return "dez";
                 case 11:
@@ -79,7 +131,12 @@ namespace Extenso
                 case 19:
                     return "dezenove";
                 default:
-                    return "";
+                {
+                    throw new Exception(
+                        string.Format(
+                            "o número {0} não está no intervalo [10-19].",
+                            numero));
+                }
             }
         }
     }
