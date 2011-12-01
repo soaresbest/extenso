@@ -4,22 +4,48 @@ namespace Extenso
 {
     public class Centena
     {
-        private readonly char _algarismoCentena;
-        private readonly char _algarismoDezena;
-        private readonly char _algarismoUnidade;
-
+        private char _algarismoCentena;
         public Dezena Dezena { get; set; }
 
         public Centena(char algarismoCentena, char algarismoDezena, char algarismoUnidade)
         {
+            Inicializar(algarismoCentena, algarismoDezena, algarismoUnidade);
+        }
+
+        public Centena(string texto)
+        {
+            char centena = '0';
+            char dezena = '0';
+            char unidade = '0';
+
+            if (texto.Length == 3)
+            {
+                centena = texto[0];
+                dezena = texto[1];
+                unidade = texto[2];
+            }
+            if (texto.Length == 2)
+            {
+                dezena = texto[0];
+                unidade = texto[1];
+            }
+            if (texto.Length == 1)
+            {
+                unidade = texto[0];
+            }
+
+            Inicializar(centena, dezena, unidade);
+        }
+
+        private void Inicializar(char algarismoCentena, char algarismoDezena, char algarismoUnidade)
+        {
             _algarismoCentena = algarismoCentena;
-            _algarismoDezena = algarismoDezena;
-            _algarismoUnidade = algarismoUnidade;
+            Dezena = new Dezena(algarismoDezena, algarismoUnidade);
         }
 
         private string CentenaDezena
         {
-            get { return (string.Concat(_algarismoCentena, _algarismoDezena, _algarismoUnidade)); }
+            get { return (string.Concat(_algarismoCentena, Dezena.DezenaUnidade)); }
         }
 
         public int ToInt()
@@ -29,8 +55,6 @@ namespace Extenso
 
         public override string ToString()
         {
-            Dezena dezena = new Dezena(_algarismoDezena, _algarismoUnidade);
-
             if (CentenaDezena == "100")
                 return "cem";
 
@@ -38,15 +62,15 @@ namespace Extenso
 
             if (string.IsNullOrEmpty(nomeCentena))
             {
-                return dezena.ToString();
+                return Dezena.ToString();
             }
 
-            if (dezena.ToString() == "zero")
+            if (Dezena.ToString() == "zero")
             {
                 return nomeCentena;
             }
 
-            return nomeCentena + " e " + dezena;
+            return nomeCentena + " e " + Dezena;
         }
 
         private string NomeCentena()

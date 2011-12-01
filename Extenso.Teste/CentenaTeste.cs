@@ -23,4 +23,15 @@ namespace Extenso.Teste
             Assert.AreEqual(resultadoEsperado, centena.ToString());
         }
     }
+
+    [TestFixture]
+    public class MilharTeste
+    {
+        [Test]
+        public void deve_retorna_mil()
+        {
+            var milhar = new Milhar("1000");
+            Assert.AreEqual("mil", milhar.ToString());
+        }
+    }
 }

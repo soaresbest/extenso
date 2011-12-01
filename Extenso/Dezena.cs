@@ -9,7 +9,7 @@ namespace Extenso
 
         public Unidade Unidade { get; set; }
 
-        private string DezenaUnidade
+        public string DezenaUnidade
         {
             get { return (string.Concat(_algarismoDezena,_algarismoUnidade)); }
         }

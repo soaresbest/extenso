@@ -5,8 +5,8 @@
         public static string Converter(ulong numero)
         {
             string numeroTexto = numero.ToString();
-            var dezena = new Dezena(numeroTexto);
-            return dezena.ToString();
+            var centena = new Centena(numeroTexto);
+            return centena.ToString();
         }
     }
 }
