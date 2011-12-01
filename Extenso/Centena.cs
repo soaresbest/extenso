@@ -27,7 +27,7 @@ namespace Extenso
 
         public override string ToString()
         {
-            return base.ToString();
+            return "cem";
         }
     }
 }
