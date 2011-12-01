@@ -1,3 +1,5 @@
+using System;
+
 namespace Extenso
 {
     public class Centena
@@ -27,12 +29,53 @@ namespace Extenso
 
         public override string ToString()
         {
-            Unidade unidade = new Unidade(_algarismoUnidade);
+            Dezena dezena = new Dezena(_algarismoDezena, _algarismoUnidade);
 
-            if (_algarismoUnidade != '0')
-                return "cento e " + unidade;
+            if (CentenaDezena == "100")
+                return "cem";
 
-            return "cem";
+            string nomeCentena = NomeCentena();
+
+            if (string.IsNullOrEmpty(nomeCentena))
+            {
+                return dezena.ToString();
+            }
+
+            if (dezena.ToString() == "zero")
+            {
+                return nomeCentena;
+            }
+
+            return nomeCentena + " e " + dezena;
+        }
+
+        private string NomeCentena()
+        {
+            switch (_algarismoCentena)
+            {
+                case '0':
+                    return string.Empty;
+                case '1':
+                    return "cento";
+                case '2':
+                    return "duzentos";
+                case '3':
+                    return "trezentos";
+                case '4':
+                    return "quatrocentos";
+                case '5':
+                    return "quinhentos";
+                case '6':
+                    return "seiscentos";
+                case '7':
+                    return "setecentos";
+                case '8':
+                    return "oitocentos";
+                case '9':
+                    return "novecentos";
+            }
+
+            throw new Exception("BIZARRO !!");
         }
     }
 }

@@ -64,7 +64,7 @@ namespace Extenso
             }
             else
             {
-                string vintePraCima = VintePraCima();
+                string vintePraCima = NomeDezena();
 
                 string unidadeNome = Unidade.ToString();
 
@@ -79,7 +79,7 @@ namespace Extenso
             }
         }
 
-        private string VintePraCima()
+        private string NomeDezena()
         {
             switch (_algarismoDezena)
             {
