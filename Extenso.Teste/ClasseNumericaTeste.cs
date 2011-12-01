@@ -46,5 +46,12 @@ namespace Extenso.Teste
             var milhar = new ClasseNumerica(texto);
             Assert.AreEqual(tamanhoEsperado, milhar.BuscarTamanhoCentena(indiceInicial));
         }
+
+        [Test]
+        public void ultima_centena_vale_214_para_5447845214()
+        {
+            var milhar = new ClasseNumerica("5447845214");
+            Assert.AreEqual(214, milhar.Centenas.Last());
+        }
     }
 }

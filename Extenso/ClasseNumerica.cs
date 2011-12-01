@@ -26,18 +26,25 @@ namespace Extenso
             }
         }
 
-        public int BuscarTamanhoCentena(int i)
+        public int BuscarTamanhoCentena(int indice)
         {
-            throw new NotImplementedException();
+            int quociente = _texto.Length / 3;
+
+            if (indice > quociente)
+                return _texto.Length % 3;
+
+            return 3;
         }
 
         public int BuscarIndiceInicialCentena(int indice)
         {
             int indiceInicial = _texto.Length - (3 * indice);
+
             if (indiceInicial < 0)
             {
                 indiceInicial = 0;
             }
+
             return indiceInicial;
         }
 
