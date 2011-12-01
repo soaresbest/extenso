@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Extenso
@@ -16,18 +17,29 @@ namespace Extenso
         {
             get 
             {
-                _centenas = Centenas3();
+                _centenas = new List<Centena>();
+
+                int resto = _texto.Length % 3;
+
+
+
                 return _centenas;
             }
         }
 
-        private static List<Centena> Centenas3()
+        public int QuantidadeCentenas
         {
-            var centenas = new List<Centena>();
-            centenas.Add(new Centena("111"));
-            centenas.Add(new Centena("111"));
-            centenas.Add(new Centena("111"));
-            return centenas;
+            get
+            {
+                int resto = _texto.Length % 3;
+
+                int quociente = Convert.ToInt32(_texto.Length / 3);
+
+                if (resto > 0)
+                    return quociente + 1;
+
+                return quociente;
+            }
         }
 
         public override string ToString()

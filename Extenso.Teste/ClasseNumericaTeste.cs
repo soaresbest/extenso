@@ -14,11 +14,16 @@ namespace Extenso.Teste
             Assert.AreEqual("mil", milhar.ToString());
         }
 
-        [Test]
-        public void deve_retorna_3_centenas_para_3548792()
+        [TestCase("3325644748", 4)]
+        [TestCase("332564378", 3)]
+        [TestCase("33256478", 3)]
+        [TestCase("4256478", 3)]
+        [TestCase("566478", 3)]
+        [TestCase("64778", 2)]
+        public void deve_retorna_quantidade_de_centenas_para_numeros_grandes(string numero, int quantidadeEsperada)
         {
-            var milhar = new ClasseNumerica("3548792");
-            Assert.AreEqual(3, milhar.Centenas.Count());
+            var milhar = new ClasseNumerica(numero);
+            Assert.AreEqual(quantidadeEsperada, milhar.QuantidadeCentenas);
         }
 
         [Test]
