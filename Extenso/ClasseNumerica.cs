@@ -11,15 +11,30 @@ namespace Extenso
         public ClasseNumerica(string texto)
         {
             _texto = texto;
+            QuebrarCentenas(texto);
+        }
+
+        private void QuebrarCentenas(string texto)
+        {
+            int quantidadeCentenas = QuantidadeCentenas();
+            for (int i = 1; i <= quantidadeCentenas; i++)
+            {
+                int indiceInicial = BuscarIndiceInicialCentena(i);
+            }
+        }
+
+        public int BuscarIndiceInicialCentena(int i)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Centena> Centenas
         {
-            get 
+            get
             {
                 _centenas = new List<Centena>();
 
-                int resto = _texto.Length % 3;
+                int resto = _texto.Length%3;
 
 
 
@@ -27,19 +42,16 @@ namespace Extenso
             }
         }
 
-        public int QuantidadeCentenas
+        public int QuantidadeCentenas()
         {
-            get
-            {
-                int resto = _texto.Length % 3;
+            int resto = _texto.Length % 3;
 
-                int quociente = Convert.ToInt32(_texto.Length / 3);
+            int quociente = Convert.ToInt32(_texto.Length / 3);
 
-                if (resto > 0)
-                    return quociente + 1;
+            if (resto > 0)
+                return quociente + 1;
 
-                return quociente;
-            }
+            return quociente;
         }
 
         public override string ToString()

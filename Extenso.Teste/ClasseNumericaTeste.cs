@@ -14,16 +14,19 @@ namespace Extenso.Teste
             Assert.AreEqual("mil", milhar.ToString());
         }
 
+        [TestCase("321321321321321321321321321321", 10)]
         [TestCase("3325644748", 4)]
         [TestCase("332564378", 3)]
         [TestCase("33256478", 3)]
         [TestCase("4256478", 3)]
-        [TestCase("566478", 3)]
+        [TestCase("566478", 2)]
         [TestCase("64778", 2)]
+        [TestCase("64", 1)]
+        [TestCase("", 0)]
         public void deve_retorna_quantidade_de_centenas_para_numeros_grandes(string numero, int quantidadeEsperada)
         {
             var milhar = new ClasseNumerica(numero);
-            Assert.AreEqual(quantidadeEsperada, milhar.QuantidadeCentenas);
+            Assert.AreEqual(quantidadeEsperada, milhar.QuantidadeCentenas());
         }
 
         [Test]
@@ -31,6 +34,13 @@ namespace Extenso.Teste
         {
             var milhar = new ClasseNumerica("3548792");
             Assert.AreEqual(792, milhar.Centenas.Last().ToInt());
+        }
+
+        [Test]
+        public void deve_retornar_o_indice_inicial_da_centena()
+        {
+            var milhar = new ClasseNumerica("12345678901234567890");
+            Assert.AreEqual(17, milhar.BuscarIndiceInicialCentena(1));
         }
     }
 }
