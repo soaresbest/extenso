@@ -44,8 +44,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CentenaTeste.cs" />
+    <Compile Include="DezenaTeste.cs" />
     <Compile Include="ExtensoTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnidadeTeste.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Extenso\Extenso.csproj">
