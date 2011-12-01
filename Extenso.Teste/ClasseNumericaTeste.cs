@@ -37,5 +37,14 @@ namespace Extenso.Teste
             var milhar = new ClasseNumerica(texto);
             Assert.AreEqual(indiceEsperado, milhar.BuscarIndiceInicialCentena(indiceInicial));
         }
+
+        [TestCase(3, "12345678901234567890", 1)]
+        [TestCase(3, "12345678901234567890", 6)]
+        [TestCase(2, "12345678901234567890", 7)]
+        public void deve_retornar_o_tamanho_da_centena(int tamanhoEsperado, string texto, int indiceInicial)
+        {
+            var milhar = new ClasseNumerica(texto);
+            Assert.AreEqual(tamanhoEsperado, milhar.BuscarTamanhoCentena(indiceInicial));
+        }
     }
 }

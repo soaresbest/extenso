@@ -22,12 +22,23 @@ namespace Extenso
             for (int i = 1; i <= quantidadeCentenas; i++)
             {
                 int indiceInicial = BuscarIndiceInicialCentena(i);
+                int tamanhoCentena = BuscarTamanhoCentena(i);
             }
+        }
+
+        public int BuscarTamanhoCentena(int i)
+        {
+            throw new NotImplementedException();
         }
 
         public int BuscarIndiceInicialCentena(int indice)
         {
-            return _texto.Length - (3 * indice);
+            int indiceInicial = _texto.Length - (3 * indice);
+            if (indiceInicial < 0)
+            {
+                indiceInicial = 0;
+            }
+            return indiceInicial;
         }
 
         public IEnumerable<Centena> Centenas
