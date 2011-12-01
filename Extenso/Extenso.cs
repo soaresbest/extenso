@@ -36,12 +36,12 @@ namespace Extenso
             switch (unidade)
             {
                 case '0':
-                {
-                    if (numero > 9)
-                        return "";
+                    {
+                        if (numero > 9)
+                            return "";
 
-                    return "zero";
-                }
+                        return "zero";
+                    }
                 case '1':
                     return "um";
                 case '2':
@@ -61,13 +61,13 @@ namespace Extenso
                 case '9':
                     return "nove";
                 default:
-                {
-                    throw new Exception(
-                    string.Format(
-                        "a unidade {0} do número {1} não está no intervalo [0-9].",
-                        unidade,
-                        numero));
-                }
+                    {
+                        throw new Exception(
+                        string.Format(
+                            "a unidade {0} do número {1} não está no intervalo [0-9].",
+                            unidade,
+                            numero));
+                    }
             }
         }
 
@@ -96,13 +96,13 @@ namespace Extenso
                 case '9':
                     return "noventa";
                 default:
-                {
-                    throw new Exception(
-                        string.Format(
-                            "a dezena {0} do número {1} não está no intervalo [2-9].",
-                            dezena,
-                            numero));
-                }
+                    {
+                        throw new Exception(
+                            string.Format(
+                                "a dezena {0} do número {1} não está no intervalo [2-9].",
+                                dezena,
+                                numero));
+                    }
             }
         }
 
@@ -131,12 +131,12 @@ namespace Extenso
                 case 19:
                     return "dezenove";
                 default:
-                {
-                    throw new Exception(
-                        string.Format(
-                            "o número {0} não está no intervalo [10-19].",
-                            numero));
-                }
+                    {
+                        throw new Exception(
+                            string.Format(
+                                "o número {0} não está no intervalo [10-19].",
+                                numero));
+                    }
             }
         }
     }
@@ -152,11 +152,106 @@ namespace Extenso
 
     public class Dezena
     {
-        public Dezena(char algarismoDezena, char algarismoUnidade)
+        public Unidade Unidade { get; set; }
+        public char AlgarismoDezena { get; private set; }
+        public char AlgarismoUnidade { get; private set; }
+
+        private string DezenaUnidade
         {
+            get { return (AlgarismoDezena + AlgarismoUnidade).ToString(); }
         }
 
-        public Unidade Unidade { get; set; }
+        public int ToInt()
+        {
+            return int.Parse(DezenaUnidade);
+        }
+
+        public Dezena(char algarismoDezena, char algarismoUnidade)
+        {
+            Unidade = new Unidade(algarismoUnidade);
+
+            AlgarismoDezena = algarismoDezena;
+            AlgarismoUnidade = algarismoUnidade;
+        }
+
+        public override string ToString()
+        {
+            int numero = ToInt();
+
+            if (numero >= 10 && numero <= 19)
+            {
+                return DezDezenove();
+            }
+            else
+            {
+                string vintePraCima = VintePraCima();
+
+                string unidadeNome = Unidade.ToString();
+
+                if (unidadeNome == "zero")
+                {
+                    return vintePraCima;
+                }
+                else
+                {
+                    return vintePraCima + " e " + unidadeNome;
+                }
+            }
+        }
+
+        private string VintePraCima()
+        {
+            switch (AlgarismoDezena)
+            {
+                case '2':
+                    return "vinte";
+                case '3':
+                    return "trinta";
+                case '4':
+                    return "quarenta";
+                case '5':
+                    return "cinquenta";
+                case '6':
+                    return "sessenta";
+                case '7':
+                    return "setenta";
+                case '8':
+                    return "oitenta";
+                case '9':
+                    return "noventa";
+                default:
+                    throw new Exception(string.Format("AlgarismoDezena inválido: [{0}]", AlgarismoDezena));
+            }
+        }
+
+        private string DezDezenove()
+        {
+            switch (DezenaUnidade)
+            {
+                case "10":
+                    return "dez";
+                case "11":
+                    return "onze";
+                case "12":
+                    return "doze";
+                case "13":
+                    return "treze";
+                case "14":
+                    return "quatorze";
+                case "15":
+                    return "quinze";
+                case "16":
+                    return "dezesseis";
+                case "17":
+                    return "dezessete";
+                case "18":
+                    return "dezoito";
+                case "19":
+                    return "dezenove";
+                default:
+                    throw new Exception(string.Format("DezenaUnidade inválida: [{0}]", DezenaUnidade));
+            }
+        }
     }
 
     public class Unidade

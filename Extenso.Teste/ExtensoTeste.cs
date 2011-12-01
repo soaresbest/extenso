@@ -56,7 +56,6 @@ namespace Extenso.Teste
         }
     }
 
-
     [TestFixture]
     public class DezenaTeste
     {
@@ -79,6 +78,13 @@ namespace Extenso.Teste
         {
             var dezena = new Dezena(algarismoDezena, algarismoUnidade);
             Assert.AreEqual(resultadoEsperado, dezena.ToString());
+        }
+
+        [Test]
+        public void ToInt_retorna_a_dezena_numericamente()
+        {
+            var dezena = new Dezena('4', '7');
+            Assert.AreEqual(47, dezena.ToInt());
         }
     }
 }
