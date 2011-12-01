@@ -72,7 +72,7 @@ namespace Extenso.Teste
         [TestCase("novecentos e noventa e nove", "999")]
         [TestCase("mil", "1000")]
         [TestCase("dois mil", "2000")]
-        public void deve_retornar_mil_para_1000(string esperado, string numeroPassado)
+        public void deve_retornar_extenso_para_entrada_numerica(string esperado, string numeroPassado)
         {
             var classeNumerica = new ClasseNumerica(numeroPassado);
             Assert.AreEqual(esperado, classeNumerica.ToString());

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Extenso
 {
@@ -70,11 +71,25 @@ namespace Extenso
 
         public override string ToString()
         {
-            var numero = ulong.Parse(_texto);
-            if (numero < 1000)
-                return new Centena(_texto).ToString();
+            var primeiraCentena = Centenas.First();
+            var ultimaCentena = Centenas.Last();
 
-            return "mil";
+            if (Centenas.Count() > 1)
+            {
+                if (ultimaCentena.ToInt() == 0)
+                {
+                    if (primeiraCentena.ToInt() == 1)
+                    {
+                        return "mil";
+                    }
+
+                    return primeiraCentena + " mil";
+                }
+
+                return primeiraCentena + " mil e " + ultimaCentena;
+            }
+
+            return primeiraCentena.ToString();
         }
     }
 }
