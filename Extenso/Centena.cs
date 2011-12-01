@@ -27,6 +27,11 @@ namespace Extenso
 
         public override string ToString()
         {
+            Unidade unidade = new Unidade(_algarismoUnidade);
+
+            if (_algarismoUnidade != '0')
+                return "cento e " + unidade;
+
             return "cem";
         }
     }
