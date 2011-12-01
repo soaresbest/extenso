@@ -17,29 +17,22 @@ namespace Extenso
         private void QuebrarCentenas(string texto)
         {
             int quantidadeCentenas = QuantidadeCentenas();
+            _centenas = new List<Centena>();
+
             for (int i = 1; i <= quantidadeCentenas; i++)
             {
                 int indiceInicial = BuscarIndiceInicialCentena(i);
             }
         }
 
-        public int BuscarIndiceInicialCentena(int i)
+        public int BuscarIndiceInicialCentena(int indice)
         {
-            throw new NotImplementedException();
+            return _texto.Length - (3 * indice);
         }
 
         public IEnumerable<Centena> Centenas
         {
-            get
-            {
-                _centenas = new List<Centena>();
-
-                int resto = _texto.Length%3;
-
-
-
-                return _centenas;
-            }
+            get { return _centenas; }
         }
 
         public int QuantidadeCentenas()

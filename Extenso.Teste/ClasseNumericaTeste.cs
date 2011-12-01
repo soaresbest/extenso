@@ -29,18 +29,13 @@ namespace Extenso.Teste
             Assert.AreEqual(quantidadeEsperada, milhar.QuantidadeCentenas());
         }
 
-        [Test]
-        public void ultima_centena_deve_ser_792_para_3548792()
+        [TestCase(17, "12345678901234567890", 1)]
+        [TestCase(2, "12345678901234567890", 6)]
+        [TestCase(0, "12345678901234567890", 7)]
+        public void deve_retornar_o_indice_inicial_da_centena(int indiceEsperado, string texto, int indiceInicial)
         {
-            var milhar = new ClasseNumerica("3548792");
-            Assert.AreEqual(792, milhar.Centenas.Last().ToInt());
-        }
-
-        [Test]
-        public void deve_retornar_o_indice_inicial_da_centena()
-        {
-            var milhar = new ClasseNumerica("12345678901234567890");
-            Assert.AreEqual(17, milhar.BuscarIndiceInicialCentena(1));
+            var milhar = new ClasseNumerica(texto);
+            Assert.AreEqual(indiceEsperado, milhar.BuscarIndiceInicialCentena(indiceInicial));
         }
     }
 }
