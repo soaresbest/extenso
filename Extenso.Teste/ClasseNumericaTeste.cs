@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -51,7 +50,32 @@ namespace Extenso.Teste
         public void ultima_centena_vale_214_para_5447845214()
         {
             var milhar = new ClasseNumerica("5447845214");
-            Assert.AreEqual(214, milhar.Centenas.Last());
+            Assert.AreEqual(214, milhar.Centenas.Last().ToInt());
+        }
+
+        [Test]
+        public void penultima_centena_vale_845_para_5447845214()
+        {
+            var milhar = new ClasseNumerica("5447845214");
+            int index = milhar.Centenas.Count() - 2;
+            Assert.AreEqual(845, milhar.Centenas.ElementAt(index).ToInt());
+        }
+
+        [Test]
+        public void primeira_centena_vale_5_para_5447845214()
+        {
+            var milhar = new ClasseNumerica("5447845214");
+            Assert.AreEqual(5, milhar.Centenas.First().ToInt());
+        }
+
+        [TestCase("um", "1")]
+        [TestCase("novecentos e noventa e nove", "999")]
+        [TestCase("mil", "1000")]
+        [TestCase("dois mil", "2000")]
+        public void deve_retornar_mil_para_1000(string esperado, string numeroPassado)
+        {
+            var classeNumerica = new ClasseNumerica(numeroPassado);
+            Assert.AreEqual(esperado, classeNumerica.ToString());
         }
     }
 }

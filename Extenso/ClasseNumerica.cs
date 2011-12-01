@@ -19,10 +19,13 @@ namespace Extenso
             int quantidadeCentenas = QuantidadeCentenas();
             _centenas = new List<Centena>();
 
-            for (int i = 1; i <= quantidadeCentenas; i++)
+            for (int i = quantidadeCentenas; i >= 1; i--)
             {
                 int indiceInicial = BuscarIndiceInicialCentena(i);
                 int tamanhoCentena = BuscarTamanhoCentena(i);
+                var centenaTexto = texto.Substring(indiceInicial, tamanhoCentena);
+                var centena = new Centena(centenaTexto);
+                _centenas.Add(centena);
             }
         }
 
@@ -67,6 +70,10 @@ namespace Extenso
 
         public override string ToString()
         {
+            var numero = ulong.Parse(_texto);
+            if (numero < 1000)
+                return new Centena(_texto).ToString();
+
             return "mil";
         }
     }
