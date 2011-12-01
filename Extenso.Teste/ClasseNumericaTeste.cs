@@ -18,8 +18,14 @@ namespace Extenso.Teste
         public void deve_retorna_3_centenas_para_3548792()
         {
             var milhar = new ClasseNumerica("3548792");
-
             Assert.AreEqual(3, milhar.Centenas.Count());
+        }
+
+        [Test]
+        public void ultima_centena_deve_ser_792_para_3548792()
+        {
+            var milhar = new ClasseNumerica("3548792");
+            Assert.AreEqual(792, milhar.Centenas.Last().ToInt());
         }
     }
 }
