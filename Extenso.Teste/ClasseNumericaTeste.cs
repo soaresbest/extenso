@@ -96,21 +96,21 @@ namespace Extenso.Teste
         public void ordem_do_primeiro_bloco_vale_1()
         {
             var classeNumerica = new ClasseNumerica("100");
-            Assert.AreEqual(1, classeNumerica.Blocos.First().Ordem);
+            Assert.AreEqual(1, classeNumerica.Blocos[0].Ordem);
         }
 
         [Test]
-        public void ordem_do_segundo_bloco_vale_2()
+        public void ordem_do_quinto_bloco_vale_5()
         {
-            var classeNumerica = new ClasseNumerica("100100");
-            Assert.AreEqual(2, classeNumerica.Blocos[1].Ordem);
+            var classeNumerica = new ClasseNumerica("100100100100100");
+            Assert.AreEqual(5, classeNumerica.Blocos[4].Ordem);
         }
 
         [Test]
-        public void ordem_do_segundo_bloco_vale_3()
+        public void bloco_deve_possui_um_centena()
         {
-            var classeNumerica = new ClasseNumerica("100100100");
-            Assert.AreEqual(3, classeNumerica.Blocos[2].Ordem);
+            var classeNumerica = new ClasseNumerica("100100100100100");
+            Assert.IsNotNull(classeNumerica.Blocos[4].Centena);
         }
     }
 }
