@@ -25,8 +25,7 @@ namespace Extenso
 
             for (int i = 1; i <= quantidadeCentenas; i++)
             {
-                Bloco bloco = new Bloco();
-                bloco.Ordem = i;
+                Bloco bloco = new Bloco(_centenas[i - 1], i);
                 Blocos.Add(bloco);
             }
         }
