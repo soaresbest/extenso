@@ -14,6 +14,13 @@ namespace Extenso
         {
             _texto = texto;
             QuebrarCentenas(texto);
+            InicializarBlocos();
+        }
+
+        private void InicializarBlocos()
+        {
+            Blocos = new List<Bloco>();
+            Blocos.Add(new Bloco());
         }
 
         private void QuebrarCentenas(string texto)
