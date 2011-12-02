@@ -105,5 +105,12 @@ namespace Extenso.Teste
             var classeNumerica = new ClasseNumerica("100100");
             Assert.AreEqual(2, classeNumerica.Blocos[1].Ordem);
         }
+
+        [Test]
+        public void ordem_do_segundo_bloco_vale_3()
+        {
+            var classeNumerica = new ClasseNumerica("100100100");
+            Assert.AreEqual(3, classeNumerica.Blocos[2].Ordem);
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace Extenso
         {
             Blocos = new List<Bloco>();
             Blocos.Add(new Bloco());
+            Blocos.Add(new Bloco { Ordem = 2 });
         }
 
         private void QuebrarCentenas(string texto)
