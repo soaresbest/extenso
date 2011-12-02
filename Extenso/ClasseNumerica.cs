@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Extenso
@@ -9,6 +8,7 @@ namespace Extenso
     {
         private readonly string _texto;
         private List<Centena> _centenas;
+        public List<Bloco> Blocos;
 
         public ClasseNumerica(string texto)
         {
@@ -86,41 +86,46 @@ namespace Extenso
 
             if (Centenas.Count() > 1)
             {
-                string primeiraCentenaRetorno;
-                if (primeiraCentena.ToInt() == 1)
-                {
-                    primeiraCentenaRetorno = "mil";
-                }
-                else
-                {
-                    primeiraCentenaRetorno = string.Format("{0} mil", primeiraCentena);
-                }
-
-                if (ultimaCentena.ToInt() == 0)
-                {
-
-                    return primeiraCentenaRetorno;
-                }
-
-                string milharComCentena;
-
-                if (VerificarCentenaComDezenaZerada(ultimaCentena))
-                {
-                    milharComCentena = string.Format("{0} e {1}", primeiraCentenaRetorno, ultimaCentena);
-                }
-                else if (VerificarCentenaZerada(ultimaCentena))
-                {
-                    milharComCentena = string.Format("{0} e {1}", primeiraCentenaRetorno, ultimaCentena);
-                }
-                else
-                {
-                    milharComCentena = string.Format("{0} {1}", primeiraCentenaRetorno, ultimaCentena);
-                }
-
-                return milharComCentena;
+                return JuntaDuasCentenas(primeiraCentena, ultimaCentena);
             }
 
             return primeiraCentena.ToString();
+        }
+
+        private string JuntaDuasCentenas(Centena primeiraCentena, Centena ultimaCentena)
+        {
+            string primeiraCentenaRetorno;
+
+            if (primeiraCentena.ToInt() == 1)
+            {
+                primeiraCentenaRetorno = "mil";
+            }
+            else
+            {
+                primeiraCentenaRetorno = string.Format("{0} mil", primeiraCentena);
+            }
+
+            if (ultimaCentena.ToInt() == 0)
+            {
+                return primeiraCentenaRetorno;
+            }
+
+            string milharComCentena;
+
+            if (VerificarCentenaComDezenaZerada(ultimaCentena))
+            {
+                milharComCentena = string.Format("{0} e {1}", primeiraCentenaRetorno, ultimaCentena);
+            }
+            else if (VerificarCentenaZerada(ultimaCentena))
+            {
+                milharComCentena = string.Format("{0} e {1}", primeiraCentenaRetorno, ultimaCentena);
+            }
+            else
+            {
+                milharComCentena = string.Format("{0} {1}", primeiraCentenaRetorno, ultimaCentena);
+            }
+
+            return milharComCentena;
         }
 
         private bool VerificarCentenaZerada(Centena ultimaCentena)

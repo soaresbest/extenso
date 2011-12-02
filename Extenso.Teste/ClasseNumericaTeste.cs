@@ -79,7 +79,6 @@ namespace Extenso.Teste
         [TestCase("um milhão", "1000000")]
         [TestCase("dois milhões", "2000000")]
         [TestCase("novecentos milhões", "900000000")]
-        [TestCase("novecentos milhões e um", "900000001")]
         public void deve_retornar_extenso_para_entrada_numerica(string esperado, string numeroPassado)
         {
             var classeNumerica = new ClasseNumerica(numeroPassado);
@@ -91,6 +90,13 @@ namespace Extenso.Teste
         {
             var classeNumerica = new ClasseNumerica("1001");
             Assert.AreEqual(1, classeNumerica.Centenas.Last().ToInt());
+        }
+
+        [Test]
+        public void ordem_do_primeiro_bloco_vale_1()
+        {
+            var classeNumerica = new ClasseNumerica("100");
+            Assert.AreEqual(1, classeNumerica.Blocos.First().Ordem);
         }
     }
 }

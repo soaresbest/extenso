@@ -35,6 +35,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bloco.cs" />
     <Compile Include="Centena.cs" />
     <Compile Include="Dezena.cs" />
     <Compile Include="Extenso.cs" />
