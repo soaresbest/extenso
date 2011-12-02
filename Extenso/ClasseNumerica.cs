@@ -76,17 +76,23 @@ namespace Extenso
 
             if (Centenas.Count() > 1)
             {
-                if (ultimaCentena.ToInt() == 0)
+                string primeiraCentenaRetorno;
+                if (primeiraCentena.ToInt() == 1)
                 {
-                    if (primeiraCentena.ToInt() == 1)
-                    {
-                        return "mil";
-                    }
-
-                    return primeiraCentena + " mil";
+                    primeiraCentenaRetorno = "mil";
+                }
+                else
+                {
+                    primeiraCentenaRetorno = string.Format("{0} mil", primeiraCentena);
                 }
 
-                return primeiraCentena + " mil e " + ultimaCentena;
+                if (ultimaCentena.ToInt() == 0)
+                {
+
+                    return primeiraCentenaRetorno;
+                }
+
+                return string.Format("{0} e {1}", primeiraCentenaRetorno, ultimaCentena);
             }
 
             return primeiraCentena.ToString();

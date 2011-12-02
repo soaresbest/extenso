@@ -5,7 +5,7 @@ namespace Extenso
     public class Centena
     {
         private char _algarismoCentena;
-        public Dezena Dezena { get; set; }
+        private Dezena Dezena { get; set; }
 
         public Centena(char algarismoCentena, char algarismoDezena, char algarismoUnidade)
         {
