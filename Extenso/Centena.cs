@@ -5,7 +5,7 @@ namespace Extenso
     public class Centena
     {
         private char _algarismoCentena;
-        private Dezena Dezena { get; set; }
+        internal Dezena Dezena { get; set; }
 
         public Centena(char algarismoCentena, char algarismoDezena, char algarismoUnidade)
         {
@@ -45,7 +45,12 @@ namespace Extenso
 
         private string CentenaDezena
         {
-            get { return (string.Concat(_algarismoCentena, Dezena.DezenaUnidade)); }
+            get { return (string.Concat(Algarismo_centena, Dezena.DezenaUnidade)); }
+        }
+
+        public char Algarismo_centena
+        {
+            get { return _algarismoCentena; }
         }
 
         public int ToInt()
@@ -75,7 +80,7 @@ namespace Extenso
 
         private string NomeCentena()
         {
-            switch (_algarismoCentena)
+            switch (Algarismo_centena)
             {
                 case '0':
                     return string.Empty;

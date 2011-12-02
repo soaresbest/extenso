@@ -71,13 +71,23 @@ namespace Extenso.Teste
         [TestCase("um", "1")]
         [TestCase("novecentos e noventa e nove", "999")]
         [TestCase("mil", "1000")]
-        [TestCase("noventa e nove mil e um", "99001")]
+        [TestCase("mil e um", "1001")]
         [TestCase("mil e cem", "1100")]
         [TestCase("mil cento e um", "1101")]
+        [TestCase("duzentos mil duzentos e um", "200201")]
+        [TestCase("cem mil e um", "100001")]
+        [TestCase("um milhão", "1000000")]
         public void deve_retornar_extenso_para_entrada_numerica(string esperado, string numeroPassado)
         {
             var classeNumerica = new ClasseNumerica(numeroPassado);
             Assert.AreEqual(esperado, classeNumerica.ToString());
+        }
+
+        [Test]
+        public void toString_da_dezena_da_centena_deve_retornar_1()
+        {
+            var classeNumerica = new ClasseNumerica("1001");
+            Assert.AreEqual(1, classeNumerica.Centenas.Last().ToInt());
         }
     }
 }

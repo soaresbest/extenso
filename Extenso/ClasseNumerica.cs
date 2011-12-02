@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Extenso
@@ -92,10 +93,37 @@ namespace Extenso
                     return primeiraCentenaRetorno;
                 }
 
-                return string.Format("{0} e {1}", primeiraCentenaRetorno, ultimaCentena);
+                string milharComCentena;
+
+                if (VerificarCentenaComDezenaZerada(ultimaCentena))
+                {
+                    milharComCentena = string.Format("{0} e {1}", primeiraCentenaRetorno, ultimaCentena);
+                }
+                else if (VerificarCentenaZerada(ultimaCentena))
+                {
+                    milharComCentena = string.Format("{0} e {1}", primeiraCentenaRetorno, ultimaCentena);
+                }
+                else
+                {
+                    milharComCentena = string.Format("{0} {1}", primeiraCentenaRetorno, ultimaCentena);
+                }
+
+                return milharComCentena;
             }
 
             return primeiraCentena.ToString();
+        }
+
+        private bool VerificarCentenaZerada(Centena ultimaCentena)
+        {
+            return ultimaCentena.Algarismo_centena == '0'
+                   && ultimaCentena.Dezena.ToInt() != 0;
+        }
+
+        private static bool VerificarCentenaComDezenaZerada(Centena ultimaCentena)
+        {
+            return ultimaCentena.Algarismo_centena != '0' 
+                   && ultimaCentena.Dezena.ToInt() == 0;
         }
     }
 }
