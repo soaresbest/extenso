@@ -72,15 +72,16 @@ namespace Extenso
 
         public override string ToString()
         {
+            var centena = Centenas.First();
             if (Centenas.Count() == 3)
             {
-                if (Centenas.First().ToInt() == 1)
+                if (centena.ToInt() == 1)
                     return "um milhão";
-                else
-                    return "dois milhões";
+                
+                return centena + " milhões";
             }
 
-            var primeiraCentena = Centenas.First();
+            var primeiraCentena = centena;
             var ultimaCentena = Centenas.Last();
 
             if (Centenas.Count() > 1)

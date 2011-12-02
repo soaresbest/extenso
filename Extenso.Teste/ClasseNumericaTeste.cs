@@ -78,7 +78,8 @@ namespace Extenso.Teste
         [TestCase("cem mil e um", "100001")]
         [TestCase("um milhão", "1000000")]
         [TestCase("dois milhões", "2000000")]
-        [TestCase("nove milhões", "9000000")]
+        [TestCase("novecentos milhões", "900000000")]
+        [TestCase("novecentos milhões e um", "900000001")]
         public void deve_retornar_extenso_para_entrada_numerica(string esperado, string numeroPassado)
         {
             var classeNumerica = new ClasseNumerica(numeroPassado);
