@@ -9,13 +9,28 @@ namespace Extenso.Teste
     public class FabricaBlocosTeste
     {
         [Test]
-        public void fabrica_de_blocos_separa_os_blocos()
+        public void Fabrica_de_blocos_separa_os_blocos()
         {
             List<Bloco> blocos = FabricaBlocos.GerarBlocos("1010");
 
             var blocoEsperado = new Bloco(new Centena("1"), 2);
 
             Assert.AreEqual(blocoEsperado, blocos[0]);
+        }
+    }
+
+    [TestFixture]
+    public class ClasseNumericaTeste
+    {
+        [TestCase("1", 3, "milhão")]
+        [TestCase("2", 3, "milhões")]
+        [TestCase("1", 4, "bilhão")]
+        [TestCase("999", 4, "bilhões")]
+        [TestCase("1", 5, "trilhão")]
+        public void sufixo_de_teste(string textoCentena, int ordem, string expected)
+        {
+            var bloco = new Bloco(new Centena(textoCentena), ordem);
+            Assert.AreEqual(expected, ClasseNumerica.SufixoDe(bloco));
         }
     }
 

@@ -118,8 +118,16 @@ namespace Extenso
         public override bool Equals(object obj)
         {
             var dezena = (Dezena)obj;
-
             return dezena.DezenaUnidade == DezenaUnidade;
+        }
+        public static bool operator ==(Dezena left, Dezena right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Dezena left, Dezena right)
+        {
+            return !Equals(left, right);
         }
     }
 }

@@ -114,5 +114,15 @@ namespace Extenso
             return centena.Algarismo_centena == Algarismo_centena &&
                    centena.Dezena == Dezena;
         }
+
+        public static bool operator ==(Centena left, Centena right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Centena left, Centena right)
+        {
+            return !Equals(left, right);
+        }
     }
 }
