@@ -153,5 +153,10 @@ namespace Extenso
             return ultimaCentena.Algarismo_centena != '0' 
                    && ultimaCentena.Dezena.ToInt() == 0;
         }
+
+        public string OrdemPorExtenso(int ordem)
+        {
+            return "milhões";
+        }
     }
 }

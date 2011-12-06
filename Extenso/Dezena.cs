@@ -32,24 +32,6 @@ namespace Extenso
             _algarismoUnidade = algarismoUnidade;
         }
 
-        public Dezena(string texto)
-        {
-            char dezena='0';
-            char unidade;
-
-            if (texto.Length == 2)
-            {
-                dezena = texto[0];
-                unidade = texto[1];
-                Inicializar(dezena, unidade);
-            }
-            else
-            {
-                unidade = texto[0];
-                Inicializar(dezena, unidade);
-            }
-        }
-
         public override string ToString()
         {
             int numero = ToInt();

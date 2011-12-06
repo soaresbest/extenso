@@ -107,10 +107,25 @@ namespace Extenso.Teste
         }
 
         [Test]
-        public void bloco_deve_possui_um_centena()
+        public void bloco_possui_uma_centena()
         {
             var classeNumerica = new ClasseNumerica("100100100100100");
             Assert.IsNotNull(classeNumerica.Blocos[4].Centena);
+        }
+
+        [Test]
+        public void to_string_da_centena_funciona()
+        {
+            var classeNumerica = new ClasseNumerica("102100100100100");
+            Assert.AreEqual("cento e dois", classeNumerica.Blocos[0].Centena.ToString());
+        }
+
+        [TestCase("102100100100100", 2, "milhões")]
+        [TestCase("102100001100100", 2, "milhão")]
+        public void ordem_por_extenso_para_classe_numerica(string texto, int indexBloco, string expected)
+        {
+            var classeNumerica = new ClasseNumerica(texto);
+            Assert.AreEqual(expected, classeNumerica.OrdemPorExtenso(classeNumerica.Blocos[indexBloco].Ordem));
         }
     }
 }
