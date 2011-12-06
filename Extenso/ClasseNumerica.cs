@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Extenso
@@ -13,6 +14,7 @@ namespace Extenso
         public ClasseNumerica(string texto)
         {
             _texto = texto;
+
             QuebrarCentenas(texto);
             
             InicializarBlocos();
@@ -23,8 +25,12 @@ namespace Extenso
             int quantidadeCentenas = QuantidadeCentenas();
             Blocos = new List<Bloco>();
 
-            for (int i = 1; i <= quantidadeCentenas; i++)
+            Debug.WriteLine(string.Format("quantidadeCentenas = {0}", quantidadeCentenas));
+            for (int i = quantidadeCentenas; i > 0; i--)
             {
+                Debug.WriteLine(string.Format("i = {0}", i));
+                Debug.WriteLine(string.Format("_centenas[i - 1] = {0}", _centenas[i - 1].ToInt()));
+
                 Bloco bloco = new Bloco(_centenas[i - 1], i);
                 Blocos.Add(bloco);
             }
@@ -157,16 +163,7 @@ namespace Extenso
         public string OrdemPorExtenso(int ordem)
         {
             Bloco bloco = ObterBlocoPorOrdem(ordem);
-
-            if (ordem == 3)
-            {
-                if (bloco.Centena.ToInt() == 1)
-                    return "milhão";
-
-                return "milhões";
-            }
-
-            return "bilhões";
+            return bloco.SufixoPorExtenso();
         }
 
         private Bloco ObterBlocoPorOrdem(int ordem)

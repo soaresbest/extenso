@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -100,11 +102,22 @@ namespace Extenso.Teste
         }
 
         [Test]
-        public void ordem_do_quinto_bloco_vale_5()
+        public void fabrica_de_blocos_separa_os_blocos()
         {
-            var classeNumerica = new ClasseNumerica("100100100100100");
-            Assert.AreEqual(5, classeNumerica.Blocos[4].Ordem);
+            List<Bloco> blocos = FabricaBlocos.GerarBlocos("1010");
+            
+            Bloco blocoEsperado = new Bloco(new Centena("1"), 2);
+            
+            Assert.AreEqual(blocoEsperado, blocos[0]);
         }
+
+        //[Test]
+        //public void ordem_do_quinto_bloco_vale_5()
+        //{
+        //    var classeNumerica = new ClasseNumerica("100200300400500");
+        //    Assert.AreEqual(1, classeNumerica.Blocos[4].Ordem);
+        //    Assert.AreEqual(100, classeNumerica.Blocos.FirstOrDefault(b=>b.Ordem==5).Centena.ToInt());
+        //}
 
         [Test]
         public void bloco_possui_uma_centena()
@@ -113,21 +126,29 @@ namespace Extenso.Teste
             Assert.IsNotNull(classeNumerica.Blocos[4].Centena);
         }
 
-        [Test]
-        public void to_string_da_centena_funciona()
-        {
-            var classeNumerica = new ClasseNumerica("102100100100100");
-            Assert.AreEqual("cento e dois", classeNumerica.Blocos[0].Centena.ToString());
-        }
+        //[Test]
+        //public void to_string_da_centena_funciona()
+        //{
+        //    var classeNumerica = new ClasseNumerica("102100100100100");
+        //    Assert.AreEqual("cento e dois", classeNumerica.Blocos[0].Centena.ToString());
+        //}
 
-        [TestCase("102100100100100", 2, "milhões")]
-        [TestCase("102100001100100", 2, "milhão")]
-        [TestCase("102100001100100", 3, "bilhões")]
-        [TestCase("102001100100100", 3, "bilhão")]
-        public void ordem_por_extenso_para_classe_numerica(string texto, int indexBloco, string expected)
+        //[TestCase("100100100", 3, "milhões")]
+        //[TestCase("001100100", 3, "milhão")]
+        //[TestCase("100001100100", 4, "bilhões")]
+        //[TestCase("001100100100", 4, "bilhão")]
+        //public void ordem_por_extenso_para_classe_numerica(string texto, int ordem, string expected)
+        //{
+        //    var classeNumerica = new ClasseNumerica(texto);
+        //    Assert.AreEqual(expected, classeNumerica.OrdemPorExtenso(ordem));
+        //}
+    }
+
+    public static class FabricaBlocos
+    {
+        public static List<Bloco> GerarBlocos(string numeraTexto)
         {
-            var classeNumerica = new ClasseNumerica(texto);
-            Assert.AreEqual(expected, classeNumerica.OrdemPorExtenso(classeNumerica.Blocos[indexBloco].Ordem));
+            throw new System.NotImplementedException();
         }
     }
 }
