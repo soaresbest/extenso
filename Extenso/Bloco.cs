@@ -4,8 +4,8 @@ namespace Extenso
 {
     public class Bloco
     {
-        public int Ordem { get; set; }
-        public Centena Centena { get; set; }
+        public int Ordem { get; private set; }
+        private Centena Centena { get; set; }
 
         public Bloco(Centena centena, int ordem)
         {
@@ -39,6 +39,19 @@ namespace Extenso
                     return "bilhão";
             }
             return string.Empty;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var bloco = (Bloco)obj;
+
+            return bloco.Centena == Centena &&
+                   bloco.Ordem == Ordem;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Centena: {0}; Ordem: {1}", Centena.ToInt(), Ordem);
         }
     }
 }

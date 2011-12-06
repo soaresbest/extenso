@@ -106,5 +106,13 @@ namespace Extenso
 
             throw new Exception("BIZARRO !!");
         }
+
+        public override bool Equals(object obj)
+        {
+            var centena = (Centena)obj;
+
+            return centena.Algarismo_centena == Algarismo_centena &&
+                   centena.Dezena == Dezena;
+        }
     }
 }

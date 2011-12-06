@@ -36,5 +36,11 @@ namespace Extenso.Teste
             dezena = new Dezena('0', '0');
             Assert.AreEqual(0, dezena.ToInt());
         }
+
+        [Test]
+        public void Equals_teste()
+        {
+            Assert.AreEqual(new Dezena('0', '1'), new Dezena('0', '1'));
+        }
     }
 }

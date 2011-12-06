@@ -1,10 +1,25 @@
-using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using NUnit.Framework;
 
 namespace Extenso.Teste
 {
+    [TestFixture]
+    public class FabricaBlocosTeste
+    {
+        [Test]
+        public void fabrica_de_blocos_separa_os_blocos()
+        {
+            List<Bloco> blocos = FabricaBlocos.GerarBlocos("1010");
+
+            var blocoEsperado = new Bloco(new Centena("1"), 2);
+
+            Assert.AreEqual(blocoEsperado, blocos[0]);
+        }
+    }
+
+/*
     [TestFixture]
     public class ClasseNumericaTeste
     {
@@ -101,15 +116,6 @@ namespace Extenso.Teste
             Assert.AreEqual(1, classeNumerica.Blocos[0].Ordem);
         }
 
-        [Test]
-        public void fabrica_de_blocos_separa_os_blocos()
-        {
-            List<Bloco> blocos = FabricaBlocos.GerarBlocos("1010");
-            
-            Bloco blocoEsperado = new Bloco(new Centena("1"), 2);
-            
-            Assert.AreEqual(blocoEsperado, blocos[0]);
-        }
 
         //[Test]
         //public void ordem_do_quinto_bloco_vale_5()
@@ -143,12 +149,5 @@ namespace Extenso.Teste
         //    Assert.AreEqual(expected, classeNumerica.OrdemPorExtenso(ordem));
         //}
     }
-
-    public static class FabricaBlocos
-    {
-        public static List<Bloco> GerarBlocos(string numeraTexto)
-        {
-            throw new System.NotImplementedException();
-        }
-    }
+ */
 }

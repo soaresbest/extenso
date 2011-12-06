@@ -7,7 +7,7 @@ namespace Extenso
         private char _algarismoDezena;
         private char _algarismoUnidade;
 
-        public Unidade Unidade { get; set; }
+        private Unidade Unidade { get; set; }
 
         public string DezenaUnidade
         {
@@ -113,6 +113,13 @@ namespace Extenso
                 default:
                     throw new Exception(string.Format("DezenaUnidade inválida: [{0}]", DezenaUnidade));
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            var dezena = (Dezena)obj;
+
+            return dezena.DezenaUnidade == DezenaUnidade;
         }
     }
 }

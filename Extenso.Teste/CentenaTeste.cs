@@ -22,5 +22,11 @@ namespace Extenso.Teste
             var centena = new Centena(algarismoCentena, algarismoDezena, algarismoUnidade);
             Assert.AreEqual(resultadoEsperado, centena.ToString());
         }
+
+        [Test]
+        public void Equals_teste()
+        {
+            Assert.AreEqual(new Centena("111"), new Centena("111"));
+        }
     }
 }
