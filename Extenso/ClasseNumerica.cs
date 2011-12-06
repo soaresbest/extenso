@@ -150,13 +150,28 @@ namespace Extenso
 
         private static bool VerificarCentenaComDezenaZerada(Centena ultimaCentena)
         {
-            return ultimaCentena.Algarismo_centena != '0' 
-                   && ultimaCentena.Dezena.ToInt() == 0;
+            return ultimaCentena.Algarismo_centena != '0'
+                && ultimaCentena.Dezena.ToInt() == 0;
         }
 
         public string OrdemPorExtenso(int ordem)
         {
-            return "milhões";
+            Bloco bloco = ObterBlocoPorOrdem(ordem);
+
+            if (ordem == 3)
+            {
+                if (bloco.Centena.ToInt() == 1)
+                    return "milhão";
+
+                return "milhões";
+            }
+
+            return "bilhões";
+        }
+
+        private Bloco ObterBlocoPorOrdem(int ordem)
+        {
+            return Blocos.FirstOrDefault(b => b.Ordem == ordem);
         }
     }
 }

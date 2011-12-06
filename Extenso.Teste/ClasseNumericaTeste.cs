@@ -122,6 +122,8 @@ namespace Extenso.Teste
 
         [TestCase("102100100100100", 2, "milhões")]
         [TestCase("102100001100100", 2, "milhão")]
+        [TestCase("102100001100100", 3, "bilhões")]
+        [TestCase("102001100100100", 3, "bilhão")]
         public void ordem_por_extenso_para_classe_numerica(string texto, int indexBloco, string expected)
         {
             var classeNumerica = new ClasseNumerica(texto);
