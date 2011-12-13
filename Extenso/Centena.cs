@@ -5,7 +5,6 @@ namespace Extenso
     public class Centena
     {
         private char _algarismoCentena;
-        internal Dezena Dezena { get; set; }
 
         public Centena(char algarismoCentena, char algarismoDezena, char algarismoUnidade)
         {
@@ -37,11 +36,7 @@ namespace Extenso
             Inicializar(centena, dezena, unidade);
         }
 
-        private void Inicializar(char algarismoCentena, char algarismoDezena, char algarismoUnidade)
-        {
-            _algarismoCentena = algarismoCentena;
-            Dezena = new Dezena(algarismoDezena, algarismoUnidade);
-        }
+        internal Dezena Dezena { get; set; }
 
         private string CentenaDezena
         {
@@ -51,6 +46,12 @@ namespace Extenso
         public char Algarismo_centena
         {
             get { return _algarismoCentena; }
+        }
+
+        private void Inicializar(char algarismoCentena, char algarismoDezena, char algarismoUnidade)
+        {
+            _algarismoCentena = algarismoCentena;
+            Dezena = new Dezena(algarismoDezena, algarismoUnidade);
         }
 
         public int ToInt()
@@ -109,7 +110,7 @@ namespace Extenso
 
         public override bool Equals(object obj)
         {
-            var centena = (Centena)obj;
+            var centena = (Centena) obj;
 
             return centena.Algarismo_centena == Algarismo_centena &&
                    centena.Dezena == Dezena;

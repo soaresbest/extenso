@@ -7,21 +7,21 @@ namespace Extenso
         private char _algarismoDezena;
         private char _algarismoUnidade;
 
+        public Dezena(char algarismoDezena, char algarismoUnidade)
+        {
+            Inicializar(algarismoDezena, algarismoUnidade);
+        }
+
         private Unidade Unidade { get; set; }
 
         public string DezenaUnidade
         {
-            get { return (string.Concat(_algarismoDezena,_algarismoUnidade)); }
+            get { return (string.Concat(_algarismoDezena, _algarismoUnidade)); }
         }
 
         public int ToInt()
         {
             return int.Parse(DezenaUnidade);
-        }
-
-        public Dezena(char algarismoDezena, char algarismoUnidade)
-        {
-            Inicializar(algarismoDezena, algarismoUnidade);
         }
 
         private void Inicializar(char algarismoDezena, char algarismoUnidade)
@@ -117,9 +117,10 @@ namespace Extenso
 
         public override bool Equals(object obj)
         {
-            var dezena = (Dezena)obj;
+            var dezena = (Dezena) obj;
             return dezena.DezenaUnidade == DezenaUnidade;
         }
+
         public static bool operator ==(Dezena left, Dezena right)
         {
             return Equals(left, right);

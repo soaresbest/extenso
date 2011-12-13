@@ -7,13 +7,13 @@ namespace Extenso
     {
         public static List<Bloco> GerarBlocos(string numeroTexto)
         {
-            var centenas = QuebrarCentenas(numeroTexto);
+            List<Centena> centenas = QuebrarCentenas(numeroTexto);
 
             var blocos = new List<Bloco>();
 
             for (int i = 0; i < centenas.Count; i++)
             {
-                var ordem = centenas.Count - i;
+                int ordem = centenas.Count - i;
                 var bloco = new Bloco(centenas[i], ordem);
 
                 blocos.Add(bloco);
@@ -33,7 +33,7 @@ namespace Extenso
                 int indiceInicial = BuscarIndiceInicialCentena(i, texto);
                 int tamanhoCentena = BuscarTamanhoCentena(i, texto);
 
-                var centenaTexto = texto.Substring(indiceInicial, tamanhoCentena);
+                string centenaTexto = texto.Substring(indiceInicial, tamanhoCentena);
                 var centena = new Centena(centenaTexto);
 
                 centenas.Add(centena);
@@ -44,9 +44,9 @@ namespace Extenso
 
         private static int QuantidadeCentenas(string texto)
         {
-            int resto = texto.Length % 3;
+            int resto = texto.Length%3;
 
-            int quociente = Convert.ToInt32(texto.Length / 3);
+            int quociente = Convert.ToInt32(texto.Length/3);
 
             if (resto > 0)
                 return quociente + 1;
@@ -56,17 +56,17 @@ namespace Extenso
 
         private static int BuscarTamanhoCentena(int indice, string texto)
         {
-            int quociente = texto.Length / 3;
+            int quociente = texto.Length/3;
 
             if (indice > quociente)
-                return texto.Length % 3;
+                return texto.Length%3;
 
             return 3;
         }
 
         private static int BuscarIndiceInicialCentena(int indice, string texto)
         {
-            int indiceInicial = texto.Length - (3 * indice);
+            int indiceInicial = texto.Length - (3*indice);
 
             if (indiceInicial < 0)
             {

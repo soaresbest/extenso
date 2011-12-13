@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Extenso
 {
@@ -7,6 +9,13 @@ namespace Extenso
     {
         public static string Converter(string numero)
         {
+            var regex = new Regex(@"^\d+$");
+            bool isMatch = regex.IsMatch(numero);
+            if (!isMatch)
+            {
+                throw new ArgumentException(string.Format("o numero {0} não é numeral", numero), "numero");
+            }
+
             var stringBuilder = new StringBuilder();
 
             numero = numero.TrimStart('0');
@@ -23,7 +32,7 @@ namespace Extenso
                 return "mil";
             }
 
-            foreach (var bloco in blocos)
+            foreach (Bloco bloco in blocos)
             {
                 string sufixo = ClasseNumerica.SufixoDe(bloco);
 
@@ -50,7 +59,7 @@ namespace Extenso
             int indexOf = blocos.IndexOf(bloco);
             bool jaEstaPreenchido = indexOf > 0;
 
-            var proximasCentenasZeradas = ProximasCentenasZeradas(blocos, indexOf);
+            bool proximasCentenasZeradas = ProximasCentenasZeradas(blocos, indexOf);
 
             if (bloco.Centena.ToInt() == 0)
             {

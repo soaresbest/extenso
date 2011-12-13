@@ -6,14 +6,14 @@ namespace Extenso
     {
         public static string SufixoDe(Bloco bloco)
         {
-            var centenaNum = bloco.Centena.ToInt();
+            int centenaNum = bloco.Centena.ToInt();
 
             if (centenaNum == 0)
             {
                 return string.Empty;
             }
 
-            var plural = centenaNum > 1;
+            bool plural = centenaNum > 1;
 
             switch (bloco.Ordem)
             {
@@ -98,7 +98,6 @@ namespace Extenso
         //}
 
 
-
         //public IEnumerable<Centena> Centenas
         //{
         //    get { return _centenas; }
@@ -111,7 +110,7 @@ namespace Extenso
         //    {
         //        if (centena.ToInt() == 1)
         //            return "um milhão";
-                
+
         //        return centena + " milhões";
         //    }
 

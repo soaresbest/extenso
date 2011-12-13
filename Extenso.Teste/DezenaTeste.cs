@@ -20,10 +20,17 @@ namespace Extenso.Teste
         [TestCase('2', '9', "vinte e nove")]
         [TestCase('3', '0', "trinta")]
         [TestCase('9', '9', "noventa e nove")]
-        public void ToString_retorna_por_extenso_para_cada_algarismo(char algarismoDezena, char algarismoUnidade, string resultadoEsperado)
+        public void ToString_retorna_por_extenso_para_cada_algarismo(char algarismoDezena, char algarismoUnidade,
+                                                                     string resultadoEsperado)
         {
             var dezena = new Dezena(algarismoDezena, algarismoUnidade);
             Assert.AreEqual(resultadoEsperado, dezena.ToString());
+        }
+
+        [Test]
+        public void Equals_teste()
+        {
+            Assert.AreEqual(new Dezena('0', '1'), new Dezena('0', '1'));
         }
 
         [Test]
@@ -35,12 +42,6 @@ namespace Extenso.Teste
             Assert.AreEqual(1, dezena.ToInt());
             dezena = new Dezena('0', '0');
             Assert.AreEqual(0, dezena.ToInt());
-        }
-
-        [Test]
-        public void Equals_teste()
-        {
-            Assert.AreEqual(new Dezena('0', '1'), new Dezena('0', '1'));
         }
     }
 }

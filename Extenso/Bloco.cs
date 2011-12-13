@@ -2,18 +2,18 @@ namespace Extenso
 {
     public class Bloco
     {
-        public int Ordem { get; private set; }
-        public Centena Centena { get; set; }
-
         public Bloco(Centena centena, int ordem)
         {
             Centena = centena;
             Ordem = ordem;
         }
 
+        public int Ordem { get; private set; }
+        public Centena Centena { get; set; }
+
         public override bool Equals(object obj)
         {
-            var bloco = (Bloco)obj;
+            var bloco = (Bloco) obj;
 
             return bloco.Centena == Centena &&
                    bloco.Ordem == Ordem;
