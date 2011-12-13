@@ -19,6 +19,8 @@ namespace Extenso.Teste
         [TestCase("111", "cento e onze")]
         [TestCase("999", "novecentos e noventa e nove")]
         [TestCase("2001", "dois mil e um")]
+        [TestCase("1000", "mil")]
+        [TestCase("2000", "dois mil")]
         public void retornar_por_extenso(string numero, string respostaEsperada)
         {
             Assert.AreEqual(respostaEsperada, Extenso.Converter(numero));

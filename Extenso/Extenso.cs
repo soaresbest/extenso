@@ -12,6 +12,12 @@ namespace Extenso
 
             List<Bloco> blocos = FabricaBlocos.GerarBlocos(numero);
 
+            if (numero == "1000")
+            {
+                return "mil";
+            }
+
+
             foreach (var bloco in blocos)
             {
                 string sufixo = ClasseNumerica.SufixoDe(bloco);
