@@ -17,7 +17,6 @@ namespace Extenso
                 return "mil";
             }
 
-
             foreach (var bloco in blocos)
             {
                 string sufixo = ClasseNumerica.SufixoDe(bloco);
@@ -27,9 +26,13 @@ namespace Extenso
                     continue;
                 }
 
-                if (stringBuilder.Length > 0)
+                if (DeveColocarE(bloco, stringBuilder))
                 {
                     stringBuilder.Append(" e ");
+                }
+                else
+                {
+                    stringBuilder.Append(" ");
                 }
 
                 stringBuilder.Append(bloco.Centena);
@@ -41,7 +44,20 @@ namespace Extenso
                 }
             }
 
-            return stringBuilder.ToString();
+            string valor = stringBuilder.ToString();
+
+            return valor.Replace("e zero", "").Trim();
+        }
+
+        private static bool DeveColocarE(Bloco bloco, StringBuilder stringBuilder)
+        {
+            bool jaEstaPreenchido = stringBuilder.Length > 0;
+            
+            bool temDezenaZerada = bloco.Centena.Dezena.ToInt() == 0;
+            
+            bool centenaMenorQueCem = bloco.Centena.ToInt() < 100;
+            
+            return jaEstaPreenchido && (temDezenaZerada || centenaMenorQueCem);
         }
     }
 }
