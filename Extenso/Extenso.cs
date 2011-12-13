@@ -59,7 +59,7 @@ namespace Extenso
 
             if (jaEstaPreenchido && (temDezenaZerada || centenaMenorQueCem))
             {
-                return " e ";
+                return ", ";
             }
 
             return " ";

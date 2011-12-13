@@ -25,7 +25,8 @@ namespace Extenso.Teste
         [TestCase("1000101", "um milhão e cento e um")]
         [TestCase("1105000", "um milhão e cento e cinco mil")]
         [TestCase("2000000", "dois milhões")]
-        [TestCase("1100100", "um milhão, cem mil e cem")]
+        [TestCase("1100100100", "um bilhão, cem milhões, cem mil e cem")]
+        [TestCase("000001", "um")]
         public void retornar_por_extenso(string numero, string respostaEsperada)
         {
             Assert.AreEqual(respostaEsperada, Extenso.Converter(numero));

@@ -11,6 +11,7 @@ namespace Extenso.Teste
         [TestCase("1", 4, "bilhão")]
         [TestCase("999", 4, "bilhões")]
         [TestCase("1", 5, "trilhão")]
+        [TestCase("1", 15, "tredecilhão")]
         public void sufixo_de_teste(string textoCentena, int ordem, string expected)
         {
             var bloco = new Bloco(new Centena(textoCentena), ordem);
