@@ -5,21 +5,21 @@ namespace Extenso.Teste
     [TestFixture]
     public class ExtensoTeste
     {
-        [TestCase((ulong)0, "zero")]
-        [TestCase((ulong)1, "um")]
-        [TestCase((ulong)10, "dez")]
-        [TestCase((ulong)11, "onze")]
-        [TestCase((ulong)19, "dezenove")]
-        [TestCase((ulong)20, "vinte")]
-        [TestCase((ulong)21, "vinte e um")]
-        [TestCase((ulong)99, "noventa e nove")]
-        [TestCase((ulong)100, "cem")]
-        [TestCase((ulong)101, "cento e um")]
-        [TestCase((ulong)110, "cento e dez")]
-        [TestCase((ulong)111, "cento e onze")]
-        [TestCase((ulong)999, "novecentos e noventa e nove")]
-        [TestCase((ulong)2001, "dois mil e um")]
-        public void Para_numero_retornar_por_extenso(ulong numero, string respostaEsperada)
+        [TestCase("0", "zero")]
+        [TestCase("1", "um")]
+        [TestCase("10", "dez")]
+        [TestCase("11", "onze")]
+        [TestCase("19", "dezenove")]
+        [TestCase("20", "vinte")]
+        [TestCase("21", "vinte e um")]
+        [TestCase("99", "noventa e nove")]
+        [TestCase("100", "cem")]
+        [TestCase("101", "cento e um")]
+        [TestCase("110", "cento e dez")]
+        [TestCase("111", "cento e onze")]
+        [TestCase("999", "novecentos e noventa e nove")]
+        [TestCase("2001", "dois mil e um")]
+        public void retornar_por_extenso(string numero, string respostaEsperada)
         {
             Assert.AreEqual(respostaEsperada, Extenso.Converter(numero));
         }

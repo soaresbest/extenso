@@ -1,12 +1,41 @@
-﻿namespace Extenso
+﻿using System.Collections.Generic;
+using System.Text;
+using Extenso.Teste;
+
+namespace Extenso
 {
     public static class Extenso
     {
-        public static string Converter(ulong numero)
+        public static string Converter(string numero)
         {
-            string numeroTexto = numero.ToString();
-            var centena = new Centena(numeroTexto);
-            return centena.ToString();
+            var stringBuilder = new StringBuilder();
+
+            List<Bloco> blocos = FabricaBlocos.GerarBlocos(numero);
+
+            foreach (var bloco in blocos)
+            {
+                string sufixo = ClasseNumerica.SufixoDe(bloco);
+
+                if (sufixo == string.Empty && bloco.Ordem > 1)
+                {
+                    continue;
+                }
+
+                if (stringBuilder.Length > 0)
+                {
+                    stringBuilder.Append(" e ");
+                }
+
+                stringBuilder.Append(bloco.Centena);
+
+                if (sufixo != string.Empty)
+                {
+                    stringBuilder.Append(" ");
+                    stringBuilder.Append(sufixo);
+                }
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }

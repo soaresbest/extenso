@@ -7,6 +7,7 @@ namespace Extenso
         public static string SufixoDe(Bloco bloco)
         {
             var centenaNum = bloco.Centena.ToInt();
+
             if (centenaNum == 0)
             {
                 return string.Empty;
@@ -16,6 +17,8 @@ namespace Extenso
 
             switch (bloco.Ordem)
             {
+                case 1:
+                    return string.Empty;
                 case 2:
                     return "mil";
                 case 3:
