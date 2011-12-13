@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Extenso.Teste
+namespace Extenso
 {
     public static class FabricaBlocos
     {

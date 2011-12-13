@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using Extenso.Teste;
 
 namespace Extenso
 {
@@ -10,7 +9,14 @@ namespace Extenso
         {
             var stringBuilder = new StringBuilder();
 
+            numero = numero.TrimStart('0');
+
             List<Bloco> blocos = FabricaBlocos.GerarBlocos(numero);
+
+            if (numero == string.Empty)
+            {
+                return "zero";
+            }
 
             if (numero == "1000")
             {
@@ -36,9 +42,7 @@ namespace Extenso
                 }
             }
 
-            string valor = stringBuilder.ToString();
-
-            return valor.Replace("e zero", "").Trim();
+            return stringBuilder.ToString();
         }
 
         private static string ColocarSeparadorDeCentena(Bloco bloco, List<Bloco> blocos)
@@ -47,6 +51,11 @@ namespace Extenso
             bool jaEstaPreenchido = indexOf > 0;
 
             var proximasCentenasZeradas = ProximasCentenasZeradas(blocos, indexOf);
+
+            if (bloco.Centena.ToInt() == 0)
+            {
+                return string.Empty;
+            }
 
             if (proximasCentenasZeradas && jaEstaPreenchido)
             {
@@ -62,7 +71,7 @@ namespace Extenso
                 return ", ";
             }
 
-            return " ";
+            return string.Empty;
         }
 
         private static bool ProximasCentenasZeradas(List<Bloco> blocos, int indexOf)

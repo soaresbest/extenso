@@ -50,7 +50,7 @@ namespace Extenso
 
                 string unidadeNome = Unidade.ToString();
 
-                if (unidadeNome == "zero")
+                if (unidadeNome == string.Empty)
                 {
                     return vintePraCima;
                 }

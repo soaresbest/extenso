@@ -16,7 +16,7 @@ namespace Extenso
             switch (_algarismoUnidade)
             {
                 case '0':
-                    return "zero";
+                    return string.Empty;
                 case '1':
                     return "um";
                 case '2':

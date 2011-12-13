@@ -5,7 +5,7 @@ namespace Extenso.Teste
     [TestFixture]
     public class UnidadeTeste
     {
-        [TestCase('0', "zero")]
+        [TestCase('0', "")]
         [TestCase('1', "um")]
         [TestCase('2', "dois")]
         [TestCase('3', "três")]

@@ -70,7 +70,7 @@ namespace Extenso
                 return Dezena.ToString();
             }
 
-            if (Dezena.ToString() == "zero")
+            if (Dezena.ToString() == string.Empty)
             {
                 return nomeCentena;
             }

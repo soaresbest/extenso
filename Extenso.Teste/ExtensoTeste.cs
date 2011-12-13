@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Extenso.Teste
 {
@@ -30,6 +31,12 @@ namespace Extenso.Teste
         public void retornar_por_extenso(string numero, string respostaEsperada)
         {
             Assert.AreEqual(respostaEsperada, Extenso.Converter(numero));
+        }
+
+        [Test]
+        public void disparar_argument_exception_converter_alfanumerico()
+        {
+            Assert.Catch<ArgumentException>(() => Extenso.Converter("a"));
         }
     }
 }
