@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Extenso
 {
-    public static class Extenso
+    public static class NumeroExtenso
     {
         public static string Converter(string numero)
         {
