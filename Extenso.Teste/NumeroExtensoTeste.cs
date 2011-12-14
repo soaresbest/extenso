@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Extenso.Teste
 {
     [TestFixture]
-    public class ExtensoTeste
+    public class NumeroExtensoTeste
     {
         [TestCase("0", "zero")]
         [TestCase("1", "um")]
@@ -30,13 +30,13 @@ namespace Extenso.Teste
         [TestCase("000001", "um")]
         public void retornar_por_extenso(string numero, string respostaEsperada)
         {
-            Assert.AreEqual(respostaEsperada, Extenso.Converter(numero));
+            Assert.AreEqual(respostaEsperada, NumeroExtenso.Converter(numero));
         }
 
         [Test]
         public void disparar_argument_exception_converter_alfanumerico()
         {
-            Assert.Catch<ArgumentException>(() => Extenso.Converter("a"));
+            Assert.Catch<ArgumentException>(() => NumeroExtenso.Converter("a"));
         }
     }
 }

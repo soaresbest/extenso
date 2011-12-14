@@ -47,8 +47,8 @@
     <Compile Include="CentenaTeste.cs" />
     <Compile Include="ClasseNumericaTeste.cs" />
     <Compile Include="DezenaTeste.cs" />
-    <Compile Include="ExtensoTeste.cs" />
     <Compile Include="FabricaBlocosTeste.cs" />
+    <Compile Include="NumeroExtensoTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnidadeTeste.cs" />
   </ItemGroup>
