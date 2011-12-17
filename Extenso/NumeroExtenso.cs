@@ -20,7 +20,7 @@ namespace Extenso
 
             numero = numero.TrimStart('0');
 
-            List<Bloco> blocos = FabricaBlocos.GerarBlocos(numero);
+            Blocos blocos = FabricaBlocos.GerarBlocos(numero);
 
             if (numero == string.Empty)
             {
@@ -54,33 +54,73 @@ namespace Extenso
             return stringBuilder.ToString();
         }
 
-        private static string ColocarSeparadorDeCentena(Bloco bloco, List<Bloco> blocos)
+        private static string ColocarSeparadorDeCentena(Bloco bloco, Blocos blocos)
         {
-            int indexOf = blocos.IndexOf(bloco);
-            bool jaEstaPreenchido = indexOf > 0;
+            // - Array do bloco atual
+            int indiceBloco = blocos.IndexOf(bloco);
 
-            bool proximasCentenasZeradas = ProximasCentenasZeradas(blocos, indexOf);
+            // - Array do bloco atual
+            bool primeiroBloco = indiceBloco == 0;
 
-            if (bloco.Centena.ToInt() == 0)
+            // - Array do bloco atual
+            bool ultimoBloco = indiceBloco == blocos.Count - 1;
+
+            // - Não é o primeiro bloco, então haverá separador
+            bool jaEstaPreenchido = indiceBloco > 0;
+
+            // - Tem dezena zerada: Para não separar os blocos de centena em caso de: 
+            //    - 1.000.200 = "um milhão e duzentos"    // possui "e"
+            //    - 1.000.201 = "um milhão duzentos e um" // não possui "e"
+            bool temDezenaZerada = bloco.Centena.Dezena.ToInt() == 0;
+
+            // - Centena menor que cem: 
+            //    - "mil e setenta"  // possui "e"
+            bool centenaMenorQueCem = bloco.Centena.ToInt() < 100;
+
+            // - Todas as centenas pra frente estão zeradas, 
+            //   acabou de descrever o número
+            //    - "um milhão"             // "1.000.000"  pára no primeiro bloco
+            //    - "um milhão e cem mil"   // "1.100.000"  pára no segundo bloco
+            bool proximasCentenasZeradas = ProximasCentenasZeradas(blocos, indiceBloco);
+
+            // - Bloco zerado é ignorado
+            var blocoZerado = bloco.Centena.ToInt() == 0;
+            if (blocoZerado)
             {
                 return string.Empty;
             }
 
-            if (proximasCentenasZeradas && jaEstaPreenchido)
+            // - O primeiro bloco não possui separados
+            if (primeiroBloco)
+            {
+                return string.Empty;
+            }
+
+            // - Só possui um bloco então não precisa de separador
+            var possuiApenasUmBloco = blocos.Count == 1;
+            if (possuiApenasUmBloco)
+            {
+                return string.Empty;
+            }
+
+            // - Último bloco com valor, então o separador é "e"
+            if (jaEstaPreenchido
+             && (proximasCentenasZeradas || ultimoBloco))
             {
                 return " e ";
             }
 
-            bool temDezenaZerada = bloco.Centena.Dezena.ToInt() == 0;
-
-            bool centenaMenorQueCem = bloco.Centena.ToInt() < 100;
-
-            if (jaEstaPreenchido && (temDezenaZerada || centenaMenorQueCem))
+            // - Último bloco com valor, então o separador é "e"
+            if (jaEstaPreenchido)
             {
                 return ", ";
             }
 
-            return string.Empty;
+            var sb = new StringBuilder();
+            sb.AppendLine("Regra para SEPARADOR não encontrada!");
+            sb.AppendLine(blocos.ToString());
+            sb.AppendFormat("bloco atual:{0}", bloco);
+            throw new Exception(sb.ToString());
         }
 
         private static bool ProximasCentenasZeradas(List<Bloco> blocos, int indexOf)
