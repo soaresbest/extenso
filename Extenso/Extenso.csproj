@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bloco.cs" />
+    <Compile Include="Blocos.cs" />
     <Compile Include="Centena.cs" />
     <Compile Include="Dezena.cs" />
     <Compile Include="ClasseNumerica.cs" />

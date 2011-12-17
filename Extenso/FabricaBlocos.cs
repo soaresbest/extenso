@@ -5,11 +5,11 @@ namespace Extenso
 {
     public static class FabricaBlocos
     {
-        public static List<Bloco> GerarBlocos(string numeroTexto)
+        public static Blocos GerarBlocos(string numeroTexto)
         {
             List<Centena> centenas = QuebrarCentenas(numeroTexto);
 
-            var blocos = new List<Bloco>();
+            var blocos = new Blocos();
 
             for (int i = 0; i < centenas.Count; i++)
             {
